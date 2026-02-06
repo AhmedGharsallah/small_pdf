@@ -1,6 +1,14 @@
-PDF Image Compressor 📄✂️A lightweight Python utility to aggressively shrink PDF file sizes by re-encoding and downsampling embedded images.🚀 The ProblemStandard PDF "optimization" often just removes metadata or "deflates" text streams. If your PDF is "photo-heavy" (scans, high-res photos, or slide decks), these methods barely change the file size.✨ The SolutionThis script iterates through every page of a PDF, extracts the raw image data, and uses Pillow to:Downsample images that exceed a maximum dimension.Convert images to JPEG format.Compress images using a lossy quality factor (default 40%).Re-insert the compressed images back into the original PDF structure.🛠️ RequirementsYou will need Python 3.x and the following libraries:Bashpip install pymupdf pillow
-💻 UsagePythonfrom compress import aggressive_shrink
+PDF Image Shrinker 📄✂️
+A high-performance Python utility designed to aggressively reduce the size of "photo-heavy" PDFs. Unlike standard tools, this script re-encodes embedded images using lossy compression to achieve maximum space savings.
+🚀 Why this exists
+Standard optimization often fails because it only cleans up metadata. This tool dives into the PDF structure to:
 
-# Parameters: input_path, output_path, max_dimension, quality
-aggressive_shrink("large_input.pdf", "small_output.pdf", max_dimension=1200, quality=40)
-⚙️ ConfigurationParameterDefaultDescriptionmax_dimension1200Resizes any image wider or taller than this (in pixels).quality40The JPEG compression quality (1-95). Lower = smaller file.
+Resize: Downscales massive images to a web-friendly resolution.
+
+Compress: Re-encodes images as JPEGs with adjustable quality.
+
+Clean: Removes orphaned objects and deflates data streams.
+
+🛠️ Installation
+Ensure you have Python installed, then run:
+pip install pymupdf pillow
